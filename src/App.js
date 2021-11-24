@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import {useEffect, useState} from "react";
+import  json from './data.json'
+
+import {Row} from "./row/Row";
+import {getData} from "./helpers";
 
 function App() {
+  const [data, setData] = useState([])
+
+  useEffect(()=>{
+      setData(getData(json))
+  },[])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <table className={'table-wrapper'}>
+        <thead>
+        <tr>
+          <th />
+        </tr>
+        </thead>
+
+        <tbody>
+        {data?.map((row, index) => (
+            <Row row={row} depth={0} key={index}/>
+        ))}
+        </tbody>
+      </table>
     </div>
   );
 }

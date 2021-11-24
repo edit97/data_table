@@ -1,0 +1,16 @@
+.row {
+    height: 30px;
+    cursor: pointer;
+}
+.row:nth-child(odd) {
+    background: #f8f9fa;
+}
+
+.col {
+    width: min-content;
+    padding: 0 15px;
+}
+
+.col:last-child {
+    width: 140px;
+}
